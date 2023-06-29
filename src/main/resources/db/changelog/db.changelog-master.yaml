@@ -1,55 +1,55 @@
 databaseChangeLog:
   - include:
       file: db/changelog/changes/services/create/create-services-table.sql
-  - include:
-      file: db/changelog/changes/services/insert/insert-services-table.sql
+#  - include:
+#      file: db/changelog/changes/services/insert/insert-services-table.sql
   - include:
       file: db/changelog/changes/owners/create/create-owners-table.sql
-  - include:
-      file: db/changelog/changes/owners/insert/insert-owners-table.sql
+#  - include:
+#      file: db/changelog/changes/owners/insert/insert-owners-table.sql
   - include:
       file: /db/changelog/changes/cars/create-cars-table.sql
-  - include:
-      file: /db/changelog/changes/cars/insert-cars-table.sql
+#  - include:
+#      file: /db/changelog/changes/cars/insert-cars-table.sql
   - include:
       file: db/changelog/changes/orders/create/create-orders-table.sql
   - include:
       file: db/changelog/changes/products/create/create-products-table.sql
-  - include:
-      file: db/changelog/changes/products/insert/insert-products-table.sql
+#  - include:
+#      file: db/changelog/changes/products/insert/insert-products-table.sql
   - include:
       file: db/changelog/changes/orders/create/create-order-products-table.sql
-  - include:
-      file: db/changelog/changes/orders/insert/insert-orders-table.sql
+#  - include:
+#      file: db/changelog/changes/orders/insert/insert-orders-table.sql
   - include:
       file: db/changelog/changes/owners/create/create-owners-orders-table.sql
   - include:
       file: db/changelog/changes/owners/create/create-owners-cars-table.sql
-  - include:
-      file: db/changelog/changes/orders/insert/insert-order-products-table.sql
+#  - include:
+#      file: db/changelog/changes/orders/insert/insert-order-products-table.sql
   - include:
       file: db/changelog/changes/owners/create/create-owners-orders-table.sql
-  - include:
-      file: db/changelog/changes/owners/insert/insert-owners-cars-table.sql
+#  - include:
+#      file: db/changelog/changes/owners/insert/insert-owners-cars-table.sql
   - include:
       file: db/changelog/changes/masters/create/create-masters-table.sql
   - include:
       file: db/changelog/changes/masters/create/create-master-orders-table.sql
-  - include:
-      file: db/changelog/changes/masters/insert/insert-masters-table.sql
-  - include:
-      file: db/changelog/changes/masters/insert/insert-master-orders-table.sql
+#  - include:
+#      file: db/changelog/changes/masters/insert/insert-masters-table.sql
+#  - include:
+#      file: db/changelog/changes/masters/insert/insert-master-orders-table.sql
   - include:
       file: db/changelog/changes/services/create/create-services-table.sql
   - include:
       file: db/changelog/changes/orders/create/create-order-services-table.sql
-  - include:
-      file: db/changelog/changes/services/insert/insert-services-table.sql
-  - include:
-      file: db/changelog/changes/orders/insert/insert-order-services-table.sql
-  - include:
-      file: db/changelog/changes/owners/insert/insert-owner-orders-table.sql
+#  - include:
+#      file: db/changelog/changes/services/insert/insert-services-table.sql
+#  - include:
+#      file: db/changelog/changes/orders/insert/insert-order-services-table.sql
+#  - include:
+#      file: db/changelog/changes/owners/insert/insert-owner-orders-table.sql
   - include:
       file: db/changelog/changes/services/create/create-service-masters-table.sql
-  - include:
-      file: db/changelog/changes/services/insert/insert-service-masters-table.sql
+#  - include:
+#      file: db/changelog/changes/services/insert/insert-service-masters-table.sql
