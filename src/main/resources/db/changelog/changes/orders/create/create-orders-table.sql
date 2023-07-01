@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS orders (
-                                      id BIGINT PRIMARY KEY,
+                                      id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
                                       car_id BIGINT,
                                       problem_description VARCHAR(255),
     date_acceptance TIMESTAMP,

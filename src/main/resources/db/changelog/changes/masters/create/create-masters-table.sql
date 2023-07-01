@@ -1,4 +1,4 @@
 CREATE TABLE IF NOT EXISTS masters (
-                                       id BIGSERIAL PRIMARY KEY,
+                                       id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
                                        name VARCHAR(255)
     );
