@@ -32,32 +32,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/register/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/products/**",
+                .antMatchers(
+                "/swagger-ui/**",
+                "/v3/api-docs/**",
+                "/swagger-ui.html",
+                "/swagger-ui/index.html",
+                "/webjars/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/register/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/products/**",
                         "/orders/**",
+                        "/cars/**",
+                        "/owners/**",
+                        "/masters/**",
                         "/services/**")
-                .hasAnyRole(ROLE_ADMIN)
-                .antMatchers(HttpMethod.POST,"/products/**",
+                .hasAnyRole(ROLE_ADMIN, ROLE_USER)
+                .antMatchers(HttpMethod.POST, "/products/**",
+                        "/cars/**",
+                        "/owners/**",
+                        "/masters/**",
                         "/orders/**",
+                        "/users/**",
                         "/services/**")
                 .hasRole(ROLE_ADMIN)
-//                .antMatchers(HttpMethod.PUT,"/movie-sessions/{id}**").hasRole(ROLE_ADMIN)
-//                .antMatchers(HttpMethod.DELETE,"/movie-sessions/{id}**")
-//                .hasRole(ROLE_ADMIN)
-//                .antMatchers(HttpMethod.GET,"/orders/**", "/shopping-carts/by-user/**")
-//                .hasRole(ROLE_USER)
-//                .antMatchers(HttpMethod.POST,"/orders/complete/**").hasRole(ROLE_USER)
-//                .antMatchers(HttpMethod.PUT,"/shopping-carts/movie-sessions/**")
-//                .hasRole(ROLE_USER)
-//                .antMatchers(HttpMethod.GET,"/users/by-email/**").hasRole(ROLE_ADMIN)
+                .antMatchers(HttpMethod.DELETE, "/products/**")
+                .hasRole(ROLE_ADMIN)
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                .defaultSuccessUrl("/products", true)
                 .permitAll()
                 .and()
                 .httpBasic()
                 .and()
                 .csrf().disable();
+
     }
 }

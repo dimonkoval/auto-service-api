@@ -11,8 +11,7 @@
         </File>
     </Appenders>
     <Loggers>
-        <!-- avoid duplicated logs with additivity=false -->
-        <Logger name="cinema" level="info" additivity="false">
+        <Logger name="carservice" level="info" additivity="false">
             <AppenderRef ref="LogToConsole"/>
             <AppenderRef ref="LogToFile"/>
         </Logger>

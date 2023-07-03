@@ -1,5 +1,6 @@
 package org.example.carservice.controller;
 
+import io.swagger.annotations.ApiOperation;
 import org.example.carservice.dto.mapper.DtoMapper;
 import org.example.carservice.dto.request.UserRequestDto;
 import org.example.carservice.dto.response.UserResponseDto;
@@ -24,6 +25,7 @@ public class UserController {
     }
 
     @GetMapping("/by-email")
+    @ApiOperation(value = "Get User by email")
     public UserResponseDto findByEmail(@RequestParam String email) {
         User user = userService.findByEmail(email);
         return dtoMapper.toDto(user);
