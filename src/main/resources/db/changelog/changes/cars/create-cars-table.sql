@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS cars (
-                                    id BIGSERIAL PRIMARY KEY,
+                                    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
                                     name VARCHAR(255),
     model VARCHAR(255),
     year_of_issue INT,
