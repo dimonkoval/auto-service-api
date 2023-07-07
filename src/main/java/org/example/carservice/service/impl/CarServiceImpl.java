@@ -32,8 +32,7 @@ public class CarServiceImpl implements CarService {
         entityUpdated.setOwner(car.getOwner());
         entityUpdated.setNumber(car.getNumber());
         entityUpdated.setYearOfIssue(car.getYearOfIssue());
-        carRepository.save(entityUpdated);
-        return entityUpdated;
+        return carRepository.save(entityUpdated);
     }
 
     @Override

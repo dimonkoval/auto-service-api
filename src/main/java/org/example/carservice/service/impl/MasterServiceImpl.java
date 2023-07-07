@@ -1,5 +1,6 @@
 package org.example.carservice.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 import org.example.carservice.model.Master;
 import org.example.carservice.model.Order;
@@ -34,7 +35,7 @@ public class MasterServiceImpl implements MasterService {
     }
 
     @Override
-    public double getSalaryOfMasterByOrder(Long masterId, Long orderId) {
+    public BigDecimal getSalaryOfMasterByOrder(Long masterId, Long orderId) {
         return masterRepository.getSalaryOfMasterByOrder(masterId, orderId);
     }
 

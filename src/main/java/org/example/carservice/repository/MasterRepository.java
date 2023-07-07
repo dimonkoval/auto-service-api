@@ -1,5 +1,6 @@
 package org.example.carservice.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import org.example.carservice.model.Master;
 import org.example.carservice.model.Order;
@@ -15,7 +16,7 @@ public interface MasterRepository extends JpaRepository<Master, Long> {
 
     @Query("SELECT o.costTotal FROM Master m JOIN m.orders o "
             + "WHERE m.id = :masterId AND o.id = :orderId")
-    double getSalaryOfMasterByOrder(@Param("masterId") Long masterId,
-                                    @Param("orderId") Long orderId);
+    BigDecimal getSalaryOfMasterByOrder(@Param("masterId") Long masterId,
+                                                @Param("orderId") Long orderId);
 
 }

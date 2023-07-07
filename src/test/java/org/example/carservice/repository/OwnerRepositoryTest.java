@@ -1,9 +1,9 @@
 package org.example.carservice.repository;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import java.math.BigDecimal;
 import java.util.List;
 import org.example.carservice.model.Order;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @DataJpaTest
 @Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class MasterRepositoryTest {
+class OwnerRepositoryTest {
     @Container
     static PostgreSQLContainer<?> database = new PostgreSQLContainer<>("postgres:latest")
             .withDatabaseName("springboot")
@@ -34,21 +34,14 @@ class MasterRepositoryTest {
     }
 
     @Autowired
-    private MasterRepository masterRepository;
+    private OwnerRepository ownerRepository;
 
     @Test
-    void findAllOrdersByMasterId_ok() {
-        List<Order> actual = masterRepository.findAllOrdersByMasterId(1L);
+    void findAllOrdersByOwnerId_Ok() {
+        List<Order> actual = ownerRepository.findAllOrdersByOwnerId(5L);
         assertNotNull(actual);
-        assertEquals(4, actual.size());
-        assertEquals(Double.valueOf(350.5), actual.get(3).getCostTotal().doubleValue());
+        assertEquals(2, actual.size());
         assertEquals(2L, actual.get(1).getCar().getOwner().getId());
-    }
-
-    @Test
-    void getSalaryOfMasterByOrder_Ok() {
-        BigDecimal actual = masterRepository.getSalaryOfMasterByOrder(2L, 4L);
-        assertNotNull(actual);
-        assertEquals(BigDecimal.valueOf(1200.75), actual);
+        assertNotEquals(1L, actual.get(0).getCar().getOwner().getId());
     }
 }
