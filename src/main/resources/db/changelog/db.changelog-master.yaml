@@ -59,9 +59,9 @@ databaseChangeLog:
       file: db/changelog/changes/users/create/create-users.sql
   - include:
       file: db/changelog/changes/users/create/create-user-roles.sql
-  - include:
-      file: db/changelog/changes/users/insert/insert-users.sql
+#  - include:
+#      file: db/changelog/changes/users/insert/insert-users.sql
   - include:
       file: db/changelog/changes/users/insert/insert-roles.sql
-  - include:
-      file: db/changelog/changes/users/insert/insert-user-roles.sql
+#  - include:
+#      file: db/changelog/changes/users/insert/insert-user-roles.sql
