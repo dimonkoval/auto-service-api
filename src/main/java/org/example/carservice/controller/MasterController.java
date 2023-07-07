@@ -1,6 +1,7 @@
 package org.example.carservice.controller;
 
 import io.swagger.annotations.ApiOperation;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.example.carservice.dto.mapper.DtoMapper;
@@ -42,8 +43,8 @@ public class MasterController {
 
     @GetMapping("/salary")
     @ApiOperation(value = "Get salary of master by order")
-    public double getSalaryOfMasterByOrder(@RequestParam Long masterId,
-                                           @RequestParam Long orderId) {
+    public BigDecimal getSalaryOfMasterByOrder(@RequestParam Long masterId,
+                                               @RequestParam Long orderId) {
         return masterService.getSalaryOfMasterByOrder(masterId, orderId);
     }
 
