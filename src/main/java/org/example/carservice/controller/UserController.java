@@ -1,7 +1,8 @@
 package org.example.carservice.controller;
 
 import io.swagger.annotations.ApiOperation;
-import org.example.carservice.dto.mapper.DtoMapper;
+import org.example.carservice.exception.DataProcessingException;
+import org.example.carservice.mapper.DtoMapper;
 import org.example.carservice.dto.request.UserRequestDto;
 import org.example.carservice.dto.response.UserResponseDto;
 import org.example.carservice.model.User;
@@ -27,7 +28,9 @@ public class UserController {
     @GetMapping("/by-email")
     @ApiOperation(value = "Get User by email")
     public UserResponseDto findByEmail(@RequestParam String email) {
-        User user = userService.findByEmail(email);
+        User user = userService.findByEmail(email)  .orElseThrow(
+                () -> new DataProcessingException("User by email " + email + " not found",
+                        new IllegalArgumentException("Email not found")));
         return dtoMapper.toDto(user);
     }
 }

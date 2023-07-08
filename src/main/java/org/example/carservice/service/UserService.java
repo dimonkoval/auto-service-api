@@ -1,5 +1,6 @@
 package org.example.carservice.service;
 
+import java.util.Optional;
 import org.example.carservice.model.User;
 
 public interface UserService {
@@ -7,5 +8,5 @@ public interface UserService {
 
     User get(Long id);
 
-    User findByEmail(String email);
+    Optional<User> findByEmail(String email);
 }

@@ -2,7 +2,7 @@ package org.example.carservice.controller;
 
 import io.swagger.annotations.ApiOperation;
 import javax.validation.Valid;
-import org.example.carservice.dto.mapper.DtoMapper;
+import org.example.carservice.mapper.DtoMapper;
 import org.example.carservice.dto.request.UserRequestDto;
 import org.example.carservice.dto.response.UserResponseDto;
 import org.example.carservice.model.User;

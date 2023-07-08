@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import org.example.carservice.model.Role;
 import org.example.carservice.model.User;
 import org.junit.jupiter.api.Test;
@@ -42,7 +43,8 @@ class UserRepositoryTest {
 
     @Test
     void findByEmail_Ok() {
-        User actual = userRepository.findByEmail(EMAIL_ADMIN);
+        Optional<User> optionalUser = userRepository.findByEmail(EMAIL_ADMIN);
+        User actual = optionalUser.get();
         assertNotNull(actual);
         ArrayList<Role> roles = new ArrayList<>(actual.getRoles());
         assertEquals(2L, roles.size());

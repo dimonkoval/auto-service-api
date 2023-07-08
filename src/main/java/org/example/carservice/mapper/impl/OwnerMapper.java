@@ -1,8 +1,9 @@
-package org.example.carservice.dto.mapper;
+package org.example.carservice.mapper.impl;
 
 import java.util.stream.Collectors;
 import org.example.carservice.dto.request.OwnerRequestDto;
 import org.example.carservice.dto.response.OwnerResponseDto;
+import org.example.carservice.mapper.DtoMapper;
 import org.example.carservice.model.Car;
 import org.example.carservice.model.Order;
 import org.example.carservice.model.Owner;

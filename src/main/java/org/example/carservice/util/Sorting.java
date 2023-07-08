@@ -7,6 +7,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 
 public class Sorting {
+    private Sorting() {
+    }
 
     public static Sort getSortFromRequestParam(String sortBy) {
         List<Order> orders = new ArrayList<>();

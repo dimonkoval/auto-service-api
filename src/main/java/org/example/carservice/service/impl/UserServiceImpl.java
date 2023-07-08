@@ -1,5 +1,6 @@
 package org.example.carservice.service.impl;//package org.example.carservice.service.Impl;
 
+import java.util.Optional;
 import org.example.carservice.model.User;
 import org.example.carservice.repository.UserRepository;
 import org.example.carservice.service.UserService;
@@ -28,7 +29,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
+
     }
 }
