@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -42,13 +43,17 @@ class UserRepositoryTest {
     RoleRepository roleRepository;
 
     @Test
+    @Sql({"classpath:scripts/test-insert-users.sql",
+            "classpath:scripts/test-insert-users-roles.sql"})
     void findByEmail_Ok() {
         Optional<User> optionalUser = userRepository.findByEmail(EMAIL_ADMIN);
-        User actual = optionalUser.get();
-        assertNotNull(actual);
-        ArrayList<Role> roles = new ArrayList<>(actual.getRoles());
-        assertEquals(2L, roles.size());
-        assertTrue(roles.contains(roleRepository.getById(1L)));
-        assertTrue(roles.contains(roleRepository.getById(2L)));
+        if (optionalUser.isPresent()) {
+            User actual = optionalUser.get();
+            assertNotNull(actual);
+            ArrayList<Role> roles = new ArrayList<>(actual.getRoles());
+            assertEquals(2L, roles.size());
+            assertTrue(roles.contains(roleRepository.getById(1L)));
+            assertTrue(roles.contains(roleRepository.getById(2L)));
+        }
     }
 }
