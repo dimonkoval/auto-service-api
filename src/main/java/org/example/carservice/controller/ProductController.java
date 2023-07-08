@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiParam;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.example.carservice.dto.mapper.DtoMapper;
+import org.example.carservice.mapper.DtoMapper;
 import org.example.carservice.dto.request.ProductRequestDto;
 import org.example.carservice.dto.response.ProductResponseDto;
 import org.example.carservice.model.Product;

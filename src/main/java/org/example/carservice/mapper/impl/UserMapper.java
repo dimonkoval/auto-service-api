@@ -1,7 +1,8 @@
-package org.example.carservice.dto.mapper;
+package org.example.carservice.mapper.impl;
 
 import org.example.carservice.dto.request.UserRequestDto;
 import org.example.carservice.dto.response.UserResponseDto;
+import org.example.carservice.mapper.DtoMapper;
 import org.example.carservice.model.User;
 import org.springframework.stereotype.Component;
 

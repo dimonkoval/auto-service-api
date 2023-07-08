@@ -1,7 +1,8 @@
-package org.example.carservice.dto.mapper;
+package org.example.carservice.mapper.impl;
 
 import org.example.carservice.dto.request.ProductRequestDto;
 import org.example.carservice.dto.response.ProductResponseDto;
+import org.example.carservice.mapper.DtoMapper;
 import org.example.carservice.model.Product;
 import org.springframework.stereotype.Component;
 

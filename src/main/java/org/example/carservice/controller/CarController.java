@@ -3,7 +3,7 @@ package org.example.carservice.controller;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.example.carservice.dto.mapper.DtoMapper;
+import org.example.carservice.mapper.DtoMapper;
 import org.example.carservice.dto.request.CarRequestDto;
 import org.example.carservice.dto.response.CarResponseDto;
 import org.example.carservice.model.Car;

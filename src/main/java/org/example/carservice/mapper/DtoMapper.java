@@ -1,4 +1,4 @@
-package org.example.carservice.dto.mapper;
+package org.example.carservice.mapper;
 
 public interface DtoMapper<P, S, Q> {
     P toModel(Q q);
