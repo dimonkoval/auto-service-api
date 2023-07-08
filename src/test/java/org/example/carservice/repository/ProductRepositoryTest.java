@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.List;
+import org.example.carservice.exception.DataProcessingException;
 import org.example.carservice.model.Product;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -22,17 +24,33 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class ProductRepositoryTest {
     @Container
-    static PostgreSQLContainer<?> database = new PostgreSQLContainer<>("postgres:latest")
-            .withDatabaseName("springboot")
-            .withUsername("springboot")
-            .withPassword("springboot");
+    static PostgreSQLContainer<?> database;
+
+    static {
+        try {
+            database = new PostgreSQLContainer<>("postgres:latest")
+                    .withDatabaseName("carService")
+                    .withUsername("carService")
+                    .withPassword("carService");
+            database.start();
+        } catch (DataProcessingException e) {
+            throw new DataProcessingException("Failed to start container", e);
+        }
+    }
 
     @DynamicPropertySource
     static void setDataSourceProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.username", database::getUsername);
-        registry.add("spring.datasource.password", database::getPassword);
-        registry.add("spring.datasource.url", database::getJdbcUrl);
+        if (database != null) {
+            try {
+                registry.add("spring.datasource.username", database::getUsername);
+                registry.add("spring.datasource.password", database::getPassword);
+                registry.add("spring.datasource.url", database::getJdbcUrl);
+            } catch (DataProcessingException e) {
+                throw new DataProcessingException("Failed to set registration properties", e);
+            }
+        }
     }
+
 
     @Autowired
     ProductRepository productRepository;
@@ -46,5 +64,16 @@ class ProductRepositoryTest {
         assertEquals(3L, actual.size());
         assertEquals(Double.valueOf(100), actual.get(1).getPrice().doubleValue());
         assertNotNull(actual.get(0).getId());
+    }
+
+    @AfterAll
+    static void tearDown() {
+        if (database != null) {
+            try {
+                database.stop();
+            } catch (DataProcessingException e) {
+                throw new DataProcessingException("container did not close", e);
+            }
+        }
     }
 }
